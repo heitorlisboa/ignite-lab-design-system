@@ -10,9 +10,9 @@ function TextInputRoot({ children, className }: TextInputRootProps) {
   return (
     <div
       className={clsx(
-        'bg-gray-800 flex items-center gap-3 w-full h-12 px-4',
-        'border-2 border-cyan-500 border-opacity-0 rounded',
-        'focus-within:border-opacity-100 transition-colors',
+        'bg-gray-800 relative flex items-center gap-3 w-full h-12',
+        'ring-2 ring-transparent focus-within:ring-cyan-500',
+        'ring-inset rounded transition-shadow',
         className
       )}
     >
@@ -26,7 +26,11 @@ function TextInputRoot({ children, className }: TextInputRootProps) {
 export type TextInputIconProps = PropsWithChildren;
 
 function TextInputIcon({ children }: TextInputIconProps) {
-  return <Slot className="w-6 h-6 text-gray-400">{children}</Slot>;
+  return (
+    <Slot className="absolute left-4 w-6 h-6 text-gray-400 pointer-events-none">
+      {children}
+    </Slot>
+  );
 }
 
 (TextInputIcon as FC).displayName = 'TextInput.Icon';
@@ -38,7 +42,7 @@ function TextInputInput({ type = 'text', ...props }: TextInputInputProps) {
     <input
       className="
         bg-transparent text-gray-200 placeholder:text-gray-400 text-sm
-        outline-none flex-1
+        w-full h-full px-4 last:pl-[3.25rem] outline-none
       "
       type={type}
       {...props}
