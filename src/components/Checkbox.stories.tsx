@@ -9,6 +9,15 @@ export default {
     id: 'checkbox-example',
     label: 'Accept terms of service',
   },
+  parameters: {
+    a11y: {
+      config: {
+        /* This rule doesn't detect when the button is labelled by a label HTML
+        tag, which is the case */
+        rules: [{ id: 'button-name', enabled: false }],
+      },
+    },
+  },
 } as Meta<CheckboxProps>;
 
 export const Default: StoryObj<CheckboxProps> = {};
