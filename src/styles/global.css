@@ -4,7 +4,8 @@
 
 @layer base {
   body {
-    @apply bg-gray-900 text-gray-100 font-sans;
+    @apply bg-gray-900 text-gray-100 font-sans underline-offset-[3px] leading-[1.2];
+    -webkit-font-smoothing: antialiased;
   }
 
   h1,

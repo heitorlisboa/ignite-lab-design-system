@@ -13,8 +13,7 @@ export function Button({ children, className, asChild }: ButtonProps) {
   return (
     <Component
       className={clsx(
-        'bg-cyan-500 hover:bg-cyan-400',
-        'text-black font-sans font-semibold',
+        'bg-cyan-500 hover:bg-cyan-400 text-black font-semibold',
         'flex items-center justify-center',
         'w-full px-4 py-3 rounded transition-colors',
         className
