@@ -1,14 +1,16 @@
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { Check } from 'phosphor-react';
+import clsx from 'clsx';
 
 export type CheckboxProps = {
   id: string;
   label: string;
+  className?: string;
 };
 
-export function Checkbox({ id, label }: CheckboxProps) {
+export function Checkbox({ id, label, className }: CheckboxProps) {
   return (
-    <div className="flex items-center gap-2">
+    <div className={clsx('flex items-center gap-2', className)}>
       <CheckboxPrimitive.Root
         id={id}
         className="bg-gray-800 w-6 h-6 p-0.5 rounded"
