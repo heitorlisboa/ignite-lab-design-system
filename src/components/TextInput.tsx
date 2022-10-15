@@ -27,7 +27,10 @@ export type TextInputIconProps = PropsWithChildren;
 
 function TextInputIcon({ children }: TextInputIconProps) {
   return (
-    <Slot className="absolute left-4 w-6 h-6 text-gray-400 pointer-events-none">
+    <Slot
+      className="absolute left-4 w-6 h-6 text-gray-400 pointer-events-none"
+      aria-hidden
+    >
       {children}
     </Slot>
   );
