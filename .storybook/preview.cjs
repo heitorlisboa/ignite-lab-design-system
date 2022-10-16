@@ -4,7 +4,15 @@ import { themes } from '@storybook/theming';
 import '../src/styles/global.css';
 
 // Initializing MSW
-initialize({ onUnhandledRequest: 'bypass' });
+initialize({
+  onUnhandledRequest: 'bypass',
+  serviceWorker: {
+    url:
+      process.env.NODE_ENV === 'production'
+        ? '/ignite-lab-design-system/mockServiceWorker.js'
+        : '/mockServiceWorker.js',
+  },
+});
 
 export const decorators = [mswDecorator];
 
