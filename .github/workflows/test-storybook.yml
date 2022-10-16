@@ -1,10 +1,11 @@
+name: Test Storybook
 on:
-  push:
-    branches:
-      - 'development'
+  workflow_run:
+    workflows: ['pages-build-deployment']
+    types: ['completed']
 
 jobs:
-  build-and-deploy:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,10 +20,7 @@ jobs:
         # See more about this command: https://yarnpkg.com/cli/install#details
         run: yarn install --immutable --immutable-cache --check-cache
 
-      - name: Build Storybook
-        run: yarn build-storybook
-
-      - name: Deploy Storybook
-        run: yarn deploy-storybook -- --ci --existing-output-dir=storybook-static
+      - name: Run Storybook tests
+        run: yarn test-storybook --ci
         env:
-          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
+          TARGET_URL: 'https://${{ github.repository_owner }}.github.io/ignite-lab-design-system'
